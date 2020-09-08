@@ -1,7 +1,9 @@
+import 'package:ense3/UI/EventsTab/AllEvents.dart';
 import 'package:flutter/material.dart';
+
 //import '../models/global.dart';
-import 'package:ense3/UI/Calendar.dart';
-import 'package:ense3/UI/EventsList.dart';
+import 'file:///D:/simar/Documents/Developpement/Flutter/Projets/Ense3/ense3/lib/UI/EventsTab/Calendar.dart';
+import 'file:///D:/simar/Documents/Developpement/Flutter/Projets/Ense3/ense3/lib/UI/EventsTab/EventsList.dart';
 
 class EventsTab extends StatelessWidget {
   @override
@@ -14,7 +16,13 @@ class EventsTab extends StatelessWidget {
           Flexible(
             fit: FlexFit.loose,
             flex: 5,
-            child: EventsList(),
+            child: Hero(
+              tag: "eventlist",
+              child: Material(
+                type: MaterialType.transparency,
+                child: EventsList(),
+              ),
+            ),
           ),
           Flexible(
             fit: FlexFit.loose,
@@ -34,7 +42,12 @@ class EventsTab extends StatelessWidget {
                 "Tous les évenements",
                 style: TextStyle(fontFamily: 'Roboto'),
               ),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => AllEvents()),
+                );
+              },
             ),
           ),
         ],

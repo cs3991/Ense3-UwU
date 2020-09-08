@@ -15,7 +15,7 @@ class _EventListState extends State<EventsList> {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Color(0xfff8f8f8),
+        color: backgroundGrey,
         border: Border.all(
           color: borderGrey,
           width: 1,
@@ -23,7 +23,7 @@ class _EventListState extends State<EventsList> {
         borderRadius: BorderRadius.circular(4),
       ),
       child: ScrollConfiguration(
-        behavior: boxScrollBehavior(),
+        behavior: BoxScrollBehavior(),
         child: ListView(
           physics: BouncingScrollPhysics(),
           children: [
@@ -165,7 +165,8 @@ class _EventListState extends State<EventsList> {
                   selected: _participates == true,
                   onSelected: (bool selected) {
                     setState(() {
-                      _participates = selected;
+                      _participates = selected ? true : null;
+                      print(_participates.toString());
                     });
                   },
                 ),
@@ -177,7 +178,8 @@ class _EventListState extends State<EventsList> {
                   selected: _participates == false,
                   onSelected: (bool selected) {
                     setState(() {
-                      _participates = !selected;
+                      _participates = selected ? false : null;
+                      print(_participates.toString());
                     });
                   },
                 ),

@@ -1,4 +1,4 @@
-import 'package:ense3/UI/EventsTab.dart';
+import 'file:///D:/simar/Documents/Developpement/Flutter/Projets/Ense3/ense3/lib/UI/EventsTab/EventsTab.dart';
 import 'package:flutter/material.dart';
 import 'models/global.dart';
 

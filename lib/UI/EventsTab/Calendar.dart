@@ -95,7 +95,7 @@ class DayView extends StatelessWidget {
               margin: EdgeInsets.all(0),
               padding: EdgeInsets.all(8),
               decoration: BoxDecoration(
-                color: Color(0xfff8f8f8),
+                color: backgroundGrey,
                 border: Border.all(
                   color: borderGrey,
                   width: 1,
