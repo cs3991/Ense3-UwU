@@ -9,7 +9,7 @@ class EventsList extends StatefulWidget {
 }
 
 class _EventListState extends State<EventsList> {
-  int _value;
+  bool _participates;
 
   @override
   Widget build(BuildContext context) {
@@ -162,10 +162,10 @@ class _EventListState extends State<EventsList> {
                 padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 4),
                 child: ChoiceChip(
                   label: Text('Je participe !'),
-                  selected: _value == 1,
+                  selected: _participates == true,
                   onSelected: (bool selected) {
                     setState(() {
-                      _value = selected ? 1 : null;
+                      _participates = selected;
                     });
                   },
                 ),
@@ -174,10 +174,10 @@ class _EventListState extends State<EventsList> {
                 padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 4),
                 child: ChoiceChip(
                   label: Text('Je ne participe pas'),
-                  selected: _value == 2,
+                  selected: _participates == false,
                   onSelected: (bool selected) {
                     setState(() {
-                      _value = selected ? 2 : null;
+                      _participates = !selected;
                     });
                   },
                 ),
