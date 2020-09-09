@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'UI/EventsTab/EventsTab.dart';
+import 'UI/Settings/Settings.dart';
 import 'models/global.dart';
 
 void main() => runApp(MyApp());
@@ -9,9 +10,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Ense3',
-      theme: ThemeData(
-        primarySwatch: e3Blue,
-      ),
+      theme: ense3Theme,
       home: Home(),
       debugShowCheckedModeBanner: false,
     );
@@ -40,13 +39,21 @@ class Home extends StatelessWidget {
                   ),
                 ),
               ),
-              ListTile(
-                leading: Icon(Icons.account_circle),
-                title: Text('Profil'),
+              GestureDetector(
+                onTap: () {},
+                child: ListTile(
+                  leading: Icon(Icons.account_circle),
+                  title: Text('Profil'),
+                ),
               ),
-              ListTile(
-                leading: Icon(Icons.settings),
-                title: Text('Settings'),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => Settings()));
+                },
+                child: ListTile(
+                  leading: Icon(Icons.settings),
+                  title: Text('Paramètres'),
+                ),
               ),
             ],
           ),

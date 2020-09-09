@@ -24,7 +24,7 @@ class EventsList extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: Text(
                 "Evénements à découvrir",
-                style: TextStyle(fontFamily: "Roboto", fontWeight: FontWeight.w600, color: almostDark, fontSize: 16),
+                style: Theme.of(context).textTheme.headline2,
               ),
             ),
             Divider(
@@ -78,7 +78,7 @@ class _EventContainerState extends State<EventContainer> {
                       "15",
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                        color: almostDark,
+                        color: almostBlack,
                         fontSize: 43,
                         height: 0.99,
                         fontFamily: "Roboto",
@@ -89,7 +89,7 @@ class _EventContainerState extends State<EventContainer> {
                       "SEPT",
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                        color: almostDark,
+                        color: almostBlack,
                         fontSize: 14,
                         height: 0.8,
                         fontFamily: "Roboto",
@@ -123,7 +123,7 @@ class _EventContainerState extends State<EventContainer> {
                         overflow: TextOverflow.ellipsis,
                         maxLines: 1,
                         style: TextStyle(
-                          color: almostDark,
+                          color: almostBlack,
                           fontSize: 14,
                           fontFamily: "Roboto",
                           fontWeight: FontWeight.normal,
@@ -133,7 +133,7 @@ class _EventContainerState extends State<EventContainer> {
                         children: [
                           Icon(
                             Icons.location_on,
-                            color: almostDark,
+                            color: almostBlack,
                             size: 20,
                           ),
                           Text(
@@ -142,7 +142,7 @@ class _EventContainerState extends State<EventContainer> {
                             overflow: TextOverflow.ellipsis,
                             maxLines: 1,
                             style: TextStyle(
-                              color: almostDark,
+                              color: almostBlack,
                               fontSize: 14,
                               fontFamily: "Roboto",
                               fontWeight: FontWeight.normal,

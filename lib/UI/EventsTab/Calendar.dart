@@ -134,7 +134,7 @@ class DayView extends StatelessWidget {
           fontFamily: "Roboto",
           fontSize: 15,
           fontWeight: FontWeight.bold,
-          color: almostDark,
+          color: almostBlack,
         ),
       ),
     );
@@ -157,7 +157,7 @@ class DayView extends StatelessWidget {
           Text(
             "12:00 - 13:00",
             style: TextStyle(
-              color: almostDark,
+              color: almostBlack,
               fontFamily: "Roboto",
               fontWeight: FontWeight.normal,
               fontSize: 14,
@@ -184,7 +184,7 @@ class DayView extends StatelessWidget {
           Text(
             "12:00 - 13:00",
             style: TextStyle(
-              color: almostDark,
+              color: almostBlack,
               fontFamily: "Roboto",
               fontWeight: FontWeight.normal,
               fontSize: 14,
@@ -211,7 +211,7 @@ class DayView extends StatelessWidget {
           Text(
             "12:00 - 13:00",
             style: TextStyle(
-              color: almostDark,
+              color: almostBlack,
               fontFamily: "Roboto",
               fontWeight: FontWeight.normal,
               fontSize: 14,
