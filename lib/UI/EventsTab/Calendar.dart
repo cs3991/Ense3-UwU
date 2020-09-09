@@ -29,19 +29,14 @@ class _HorizontalCalendarScrollViewState extends State<HorizontalCalendarScrollV
     super.initState();
     calendarController.addListener(() {
       setState(() {
-        scrollOffset = calendarController.offset;
+        scrollOffset = calendarController.offset; // Position de scroll en pixels
       });
     });
   }
 
   @override
-  void dispose() {
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    double halfWidth = (MediaQuery.of(context).size.width - 16) / 2;
+    double halfWidth = (MediaQuery.of(context).size.width) / 2 - 15;
     return Container(
       alignment: Alignment(0, 0),
       padding: EdgeInsets.symmetric(vertical: 8),
@@ -51,25 +46,20 @@ class _HorizontalCalendarScrollViewState extends State<HorizontalCalendarScrollV
         scrollDirection: Axis.horizontal,
         itemCount: _nbDaysShown,
         itemBuilder: (context, id) {
-          return buildDayCard(context, id, halfWidth);
+          double scale = 1 - ((scrollOffset + halfWidth - 150 * (id + 0.5)) / 500).abs();
+          if (scale < 0) {
+            scale = 0;
+          }
+          return Transform(
+            transform: Matrix4.identity()..scale(scale),
+            alignment: Alignment.center,
+            child: Opacity(
+              opacity: scale,
+              child: children[id],
+            ),
+          );
         },
         controller: calendarController,
-      ),
-    );
-  }
-
-// Builder pour chaque carte du calendrier scrollable
-  Widget buildDayCard(BuildContext context, int id, halfWidth) {
-    double scale = 1 - ((scrollOffset + halfWidth - 150 * (id + 0.5)) / 500).abs();
-    if (scale < 0) {
-      scale = 0;
-    }
-    return Transform(
-      transform: Matrix4.identity()..scale(scale),
-      alignment: Alignment.center,
-      child: Opacity(
-        opacity: scale,
-        child: children[id],
       ),
     );
   }

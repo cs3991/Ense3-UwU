@@ -1,9 +1,8 @@
 import 'package:ense3/UI/EventsTab/AllEvents.dart';
+import 'package:ense3/UI/EventsTab/EventsList.dart';
+import 'package:ense3/models/global.dart';
 import 'package:flutter/material.dart';
-
-//import '../models/global.dart';
-import 'file:///D:/simar/Documents/Developpement/Flutter/Projets/Ense3/ense3/lib/UI/EventsTab/Calendar.dart';
-import 'file:///D:/simar/Documents/Developpement/Flutter/Projets/Ense3/ense3/lib/UI/EventsTab/EventsList.dart';
+import 'Calendar.dart';
 
 class EventsTab extends StatelessWidget {
   @override

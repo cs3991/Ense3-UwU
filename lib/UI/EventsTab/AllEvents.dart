@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'EventsList.dart';
-import '../../models/global.dart';
+import 'package:ense3/models/global.dart';
 
 class AllEvents extends StatelessWidget {
   @override

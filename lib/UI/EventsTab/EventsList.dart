@@ -1,15 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:ense3/models/global.dart';
 
-class EventsList extends StatefulWidget {
-  @override
-  State<EventsList> createState() {
-    return _EventListState();
-  }
-}
-
-class _EventListState extends State<EventsList> {
-  bool _participates;
+class EventsList extends StatelessWidget {
+  EventsList({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -39,23 +32,31 @@ class _EventListState extends State<EventsList> {
               thickness: 1,
               color: borderGrey,
             ),
-            buildEventContainer(),
-            buildEventContainer(),
-            buildEventContainer(),
-            buildEventContainer(),
-            buildEventContainer(),
-            buildEventContainer(),
-            buildEventContainer(),
-            buildEventContainer(),
-            buildEventContainer(),
+            EventContainer(),
+            EventContainer(),
+            EventContainer(),
+            EventContainer(),
+            EventContainer(),
+            EventContainer(),
+            EventContainer(),
+            EventContainer(),
           ],
         ),
       ),
     );
   }
+}
 
-// Builder pour chaque évenement affiché dans la liste
-  Container buildEventContainer() {
+class EventContainer extends StatefulWidget {
+  @override
+  _EventContainerState createState() => _EventContainerState();
+}
+
+class _EventContainerState extends State<EventContainer> {
+  bool _participates;
+
+  @override
+  Widget build(BuildContext context) {
     return Container(
       color: Colors.transparent,
       child: Column(
@@ -166,7 +167,6 @@ class _EventListState extends State<EventsList> {
                   onSelected: (bool selected) {
                     setState(() {
                       _participates = selected ? true : null;
-                      print(_participates.toString());
                     });
                   },
                 ),
@@ -179,7 +179,6 @@ class _EventListState extends State<EventsList> {
                   onSelected: (bool selected) {
                     setState(() {
                       _participates = selected ? false : null;
-                      print(_participates.toString());
                     });
                   },
                 ),

@@ -1,5 +1,5 @@
-import 'file:///D:/simar/Documents/Developpement/Flutter/Projets/Ense3/ense3/lib/UI/EventsTab/EventsTab.dart';
 import 'package:flutter/material.dart';
+import 'UI/EventsTab/EventsTab.dart';
 import 'models/global.dart';
 
 void main() => runApp(MyApp());
