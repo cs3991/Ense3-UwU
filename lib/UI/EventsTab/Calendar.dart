@@ -77,7 +77,7 @@ class DayView extends StatelessWidget {
         children: [
           Padding(
             padding: const EdgeInsets.only(bottom: 4.0),
-            child: _buildTextDayNb(id),
+            child: _buildTextDayNb(context, id),
           ),
           Expanded(
             child: Container(
@@ -85,16 +85,16 @@ class DayView extends StatelessWidget {
               margin: EdgeInsets.all(0),
               padding: EdgeInsets.all(8),
               decoration: BoxDecoration(
-                color: backgroundGrey,
+                color: Theme.of(context).colorScheme.container,
                 border: Border.all(
-                  color: borderGrey,
+                  color: Theme.of(context).colorScheme.border,
                   width: 1,
                 ),
                 borderRadius: BorderRadius.circular(4),
               ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: _buildEventListForDay(DateTime.now().add(Duration(days: id))),
+                children: _buildEventListForDay(context, DateTime.now().add(Duration(days: id))),
               ),
             ),
           ),
@@ -106,7 +106,7 @@ class DayView extends StatelessWidget {
         children: [
           Padding(
             padding: const EdgeInsets.only(bottom: 8.0),
-            child: _buildTextDayNb(id),
+            child: _buildTextDayNb(context, id),
           ),
           ConstrainedBox(
             constraints: BoxConstraints.tightForFinite(width: 40, height: 40),
@@ -114,8 +114,8 @@ class DayView extends StatelessWidget {
               width: 30,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: backgroundGrey,
-                border: Border.all(color: borderGrey),
+                color: Theme.of(context).colorScheme.container,
+                border: Border.all(color: Theme.of(context).colorScheme.border),
               ),
             ),
           ),
@@ -124,7 +124,7 @@ class DayView extends StatelessWidget {
     }
   }
 
-  Widget _buildTextDayNb(int id) {
+  Widget _buildTextDayNb(context, int id) {
     initializeDateFormatting('fr');
     return Padding(
       padding: const EdgeInsets.only(bottom: 4.0),
@@ -134,14 +134,14 @@ class DayView extends StatelessWidget {
           fontFamily: "Roboto",
           fontSize: 15,
           fontWeight: FontWeight.bold,
-          color: almostBlack,
+          color: Theme.of(context).colorScheme.text,
         ),
       ),
     );
   }
 
 // TODO Récuperer évenements auxquels l'utilisateur participe pour le jour donné
-  List<Widget> _buildEventListForDay(DateTime date) {
+  List<Widget> _buildEventListForDay(BuildContext context, DateTime date) {
     return [
       Column(
         children: [
@@ -157,7 +157,7 @@ class DayView extends StatelessWidget {
           Text(
             "12:00 - 13:00",
             style: TextStyle(
-              color: almostBlack,
+              color: Theme.of(context).colorScheme.text,
               fontFamily: "Roboto",
               fontWeight: FontWeight.normal,
               fontSize: 14,
@@ -168,7 +168,7 @@ class DayView extends StatelessWidget {
       Divider(
         height: 0,
         thickness: 1,
-        color: borderGrey,
+        color: Theme.of(context).colorScheme.border,
       ),
       Column(
         children: [
@@ -184,7 +184,7 @@ class DayView extends StatelessWidget {
           Text(
             "12:00 - 13:00",
             style: TextStyle(
-              color: almostBlack,
+              color: Theme.of(context).colorScheme.text,
               fontFamily: "Roboto",
               fontWeight: FontWeight.normal,
               fontSize: 14,
@@ -195,7 +195,7 @@ class DayView extends StatelessWidget {
       Divider(
         height: 0,
         thickness: 1,
-        color: borderGrey,
+        color: Theme.of(context).colorScheme.border,
       ),
       Column(
         children: [
@@ -211,7 +211,7 @@ class DayView extends StatelessWidget {
           Text(
             "12:00 - 13:00",
             style: TextStyle(
-              color: almostBlack,
+              color: Theme.of(context).colorScheme.text,
               fontFamily: "Roboto",
               fontWeight: FontWeight.normal,
               fontSize: 14,

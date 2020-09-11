@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ense3/models/global.dart';
 
 class Settings extends StatelessWidget {
   @override
@@ -10,7 +11,20 @@ class Settings extends StatelessWidget {
         ),
       ),
       body: ListView(children: <Widget>[
-        GestureDetector(
+        ListTile(
+//            padding: EdgeInsets.all(20),
+          title: Text(
+            "Thème",
+            style: Theme.of(context).textTheme.bodyText2.copyWith(color: Theme.of(context).colorScheme.text),
+          ),
+          subtitle: Text(
+            Theme.of(context).brightness == Brightness.light ? "Light Ense3" : "Dark UwU",
+            style: TextStyle(
+              fontFamily: "Roboto",
+              color: Color(0xff808080),
+              fontSize: 13,
+            ),
+          ),
           onTap: () {
             showModalBottomSheet<void>(
               context: context,
@@ -18,7 +32,7 @@ class Settings extends StatelessWidget {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.only(topLeft: Radius.circular(10), topRight: Radius.circular(10)),
               ),
-              backgroundColor: Colors.white,
+              backgroundColor: Theme.of(context).colorScheme.backgroundColor,
               builder: (BuildContext context) {
                 return Wrap(
                   children: [
@@ -28,8 +42,11 @@ class Settings extends StatelessWidget {
                         children: <Widget>[
                           ListTile(
                             title: Text(
-                              "Thème Ense3 (light)",
-                              style: Theme.of(context).textTheme.bodyText2,
+                              "Thème light Ense3",
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyText2
+                                  .copyWith(color: Theme.of(context).colorScheme.text),
                             ),
                             onTap: () {
                               Navigator.pop(context);
@@ -37,8 +54,11 @@ class Settings extends StatelessWidget {
                           ),
                           ListTile(
                             title: Text(
-                              "Thème UwU (dark)",
-                              style: Theme.of(context).textTheme.bodyText2,
+                              "Thème dark UwU",
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyText2
+                                  .copyWith(color: Theme.of(context).colorScheme.text),
                             ),
                             onTap: () {
                               Navigator.pop(context);
@@ -52,13 +72,6 @@ class Settings extends StatelessWidget {
               },
             );
           },
-          child: Container(
-            padding: EdgeInsets.all(20),
-            child: Text(
-              "Thème",
-              style: Theme.of(context).textTheme.bodyText2,
-            ),
-          ),
         ),
       ]),
     );

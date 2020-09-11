@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Ense3',
-      theme: ense3Theme,
+      theme: theme,
       home: Home(),
       debugShowCheckedModeBanner: false,
     );
@@ -29,12 +29,12 @@ class Home extends StatelessWidget {
             children: <Widget>[
               DrawerHeader(
                 decoration: BoxDecoration(
-                  color: e3Blue,
+                  color: Theme.of(context).colorScheme.primaryColor,
                 ),
                 child: Text(
                   'Cédric',
                   style: TextStyle(
-                    color: Colors.white,
+                    color: Theme.of(context).colorScheme.backgroundColor,
                     fontSize: 24,
                   ),
                 ),
@@ -43,7 +43,10 @@ class Home extends StatelessWidget {
                 onTap: () {},
                 child: ListTile(
                   leading: Icon(Icons.account_circle),
-                  title: Text('Profil'),
+                  title: Text(
+                    'Profil',
+                    style: TextStyle(color: Theme.of(context).colorScheme.text),
+                  ),
                 ),
               ),
               GestureDetector(
@@ -52,7 +55,10 @@ class Home extends StatelessWidget {
                 },
                 child: ListTile(
                   leading: Icon(Icons.settings),
-                  title: Text('Paramètres'),
+                  title: Text(
+                    'Paramètres',
+                    style: TextStyle(color: Theme.of(context).colorScheme.text),
+                  ),
                 ),
               ),
             ],
@@ -60,6 +66,7 @@ class Home extends StatelessWidget {
         ),
         appBar: AppBar(
           title: Text("Ense3"),
+          backgroundColor: Theme.of(context).colorScheme.primaryColor,
           bottom: TabBar(
             tabs: [
               Tab(

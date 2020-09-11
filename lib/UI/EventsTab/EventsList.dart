@@ -8,9 +8,9 @@ class EventsList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: backgroundGrey,
+        color: Theme.of(context).colorScheme.container,
         border: Border.all(
-          color: borderGrey,
+          color: Theme.of(context).colorScheme.border,
           width: 1,
         ),
         borderRadius: BorderRadius.circular(4),
@@ -24,13 +24,13 @@ class EventsList extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: Text(
                 "Evénements à découvrir",
-                style: Theme.of(context).textTheme.headline2,
+                style: Theme.of(context).textTheme.headline2.copyWith(color: Theme.of(context).colorScheme.text),
               ),
             ),
             Divider(
               height: 0,
               thickness: 1,
-              color: borderGrey,
+              color: Theme.of(context).colorScheme.border,
             ),
             EventContainer(),
             EventContainer(),
@@ -78,7 +78,7 @@ class _EventContainerState extends State<EventContainer> {
                       "15",
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                        color: almostBlack,
+                        color: Theme.of(context).colorScheme.text,
                         fontSize: 43,
                         height: 0.99,
                         fontFamily: "Roboto",
@@ -89,7 +89,7 @@ class _EventContainerState extends State<EventContainer> {
                       "SEPT",
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                        color: almostBlack,
+                        color: Theme.of(context).colorScheme.text,
                         fontSize: 14,
                         height: 0.8,
                         fontFamily: "Roboto",
@@ -123,7 +123,7 @@ class _EventContainerState extends State<EventContainer> {
                         overflow: TextOverflow.ellipsis,
                         maxLines: 1,
                         style: TextStyle(
-                          color: almostBlack,
+                          color: Theme.of(context).colorScheme.text,
                           fontSize: 14,
                           fontFamily: "Roboto",
                           fontWeight: FontWeight.normal,
@@ -133,7 +133,7 @@ class _EventContainerState extends State<EventContainer> {
                         children: [
                           Icon(
                             Icons.location_on,
-                            color: almostBlack,
+                            color: Theme.of(context).colorScheme.text,
                             size: 20,
                           ),
                           Text(
@@ -142,7 +142,7 @@ class _EventContainerState extends State<EventContainer> {
                             overflow: TextOverflow.ellipsis,
                             maxLines: 1,
                             style: TextStyle(
-                              color: almostBlack,
+                              color: Theme.of(context).colorScheme.text,
                               fontSize: 14,
                               fontFamily: "Roboto",
                               fontWeight: FontWeight.normal,
@@ -188,7 +188,7 @@ class _EventContainerState extends State<EventContainer> {
           Divider(
             height: 0,
             thickness: 1,
-            color: borderGrey,
+            color: Theme.of(context).colorScheme.border,
           )
         ],
       ),
