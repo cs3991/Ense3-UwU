@@ -2,24 +2,34 @@ import 'package:flutter/material.dart';
 import 'UI/EventsTab/EventsTab.dart';
 import 'UI/Settings/Settings.dart';
 import 'models/global.dart';
+import 'package:ense3/models/ThemeManager.dart';
+import 'package:theme_mode_handler/theme_mode_handler.dart';
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Ense3',
-      theme: theme,
-      home: Home(),
-      debugShowCheckedModeBanner: false,
-    );
+    return ThemeModeHandler(
+        manager: MyManager(),
+        defaultTheme: ThemeMode.light,
+        builder: (ThemeMode themeMode) {
+          return MaterialApp(
+            title: 'Ense3',
+            themeMode: themeMode,
+            darkTheme: ThemeManager.darkTheme,
+            theme: ThemeManager.lightTheme,
+            home: Home(),
+            debugShowCheckedModeBanner: false,
+          );
+        });
   }
 }
 
 class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    ThemeManager.createInstance(context);
     return DefaultTabController(
       length: 3,
       child: Scaffold(
@@ -29,12 +39,12 @@ class Home extends StatelessWidget {
             children: <Widget>[
               DrawerHeader(
                 decoration: BoxDecoration(
-                  color: Theme.of(context).colorScheme.primaryColor,
+                  color: ThemeManager.getInstance().getPrimaryColor(),
                 ),
                 child: Text(
                   'Cédric',
                   style: TextStyle(
-                    color: Theme.of(context).colorScheme.backgroundColor,
+                    color: ThemeManager.getInstance().getBackgroundColor(),
                     fontSize: 24,
                   ),
                 ),
@@ -45,7 +55,7 @@ class Home extends StatelessWidget {
                   leading: Icon(Icons.account_circle),
                   title: Text(
                     'Profil',
-                    style: TextStyle(color: Theme.of(context).colorScheme.text),
+                    style: TextStyle(color: ThemeManager.getInstance().getTextColor()),
                   ),
                 ),
               ),
@@ -57,7 +67,7 @@ class Home extends StatelessWidget {
                   leading: Icon(Icons.settings),
                   title: Text(
                     'Paramètres',
-                    style: TextStyle(color: Theme.of(context).colorScheme.text),
+                    style: TextStyle(color: ThemeManager.getInstance().getTextColor()),
                   ),
                 ),
               ),
@@ -66,8 +76,9 @@ class Home extends StatelessWidget {
         ),
         appBar: AppBar(
           title: Text("Ense3"),
-          backgroundColor: Theme.of(context).colorScheme.primaryColor,
+          backgroundColor: ThemeManager.getInstance().getPrimaryColor(),
           bottom: TabBar(
+            indicatorColor: Colors.white,
             tabs: [
               Tab(
                 text: 'Evénement',

@@ -12,7 +12,7 @@ class AllEvents extends StatelessWidget {
         ),
       ),
       body: Container(
-        color: Theme.of(context).colorScheme.container,
+        color: ThemeManager.getInstance().getContainerColor(),
         padding: EdgeInsets.all(10),
         child: Hero(
           tag: "eventlist",

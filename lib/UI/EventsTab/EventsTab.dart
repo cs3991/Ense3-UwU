@@ -8,7 +8,7 @@ class EventsTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Theme.of(context).colorScheme.backgroundColor,
+      color: ThemeManager.getInstance().getBackgroundColor(),
 //      color: Color(0xff252525),
       padding: const EdgeInsets.all(15.0),
       child: Column(

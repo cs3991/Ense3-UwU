@@ -85,9 +85,9 @@ class DayView extends StatelessWidget {
               margin: EdgeInsets.all(0),
               padding: EdgeInsets.all(8),
               decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.container,
+                color: ThemeManager.getInstance().getContainerColor(),
                 border: Border.all(
-                  color: Theme.of(context).colorScheme.border,
+                  color: ThemeManager.getInstance().getBorderColor(),
                   width: 1,
                 ),
                 borderRadius: BorderRadius.circular(4),
@@ -114,8 +114,8 @@ class DayView extends StatelessWidget {
               width: 30,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: Theme.of(context).colorScheme.container,
-                border: Border.all(color: Theme.of(context).colorScheme.border),
+                color: ThemeManager.getInstance().getContainerColor(),
+                border: Border.all(color: ThemeManager.getInstance().getBorderColor()),
               ),
             ),
           ),
@@ -134,7 +134,7 @@ class DayView extends StatelessWidget {
           fontFamily: "Roboto",
           fontSize: 15,
           fontWeight: FontWeight.bold,
-          color: Theme.of(context).colorScheme.text,
+          color: ThemeManager.getInstance().getTextColor(),
         ),
       ),
     );
@@ -148,7 +148,7 @@ class DayView extends StatelessWidget {
           Text(
             "Conférence",
             style: TextStyle(
-              color: conferenceColor,
+              color: ThemeManager.conferenceColor,
               fontFamily: "Roboto",
               fontWeight: FontWeight.w600,
               fontSize: 16,
@@ -157,7 +157,7 @@ class DayView extends StatelessWidget {
           Text(
             "12:00 - 13:00",
             style: TextStyle(
-              color: Theme.of(context).colorScheme.text,
+              color: ThemeManager.getInstance().getTextColor(),
               fontFamily: "Roboto",
               fontWeight: FontWeight.normal,
               fontSize: 14,
@@ -168,14 +168,14 @@ class DayView extends StatelessWidget {
       Divider(
         height: 0,
         thickness: 1,
-        color: Theme.of(context).colorScheme.border,
+        color: ThemeManager.getInstance().getBorderColor(),
       ),
       Column(
         children: [
           Text(
             "Conférence",
             style: TextStyle(
-              color: conferenceColor,
+              color: ThemeManager.conferenceColor,
               fontFamily: "Roboto",
               fontWeight: FontWeight.w600,
               fontSize: 16,
@@ -184,7 +184,7 @@ class DayView extends StatelessWidget {
           Text(
             "12:00 - 13:00",
             style: TextStyle(
-              color: Theme.of(context).colorScheme.text,
+              color: ThemeManager.getInstance().getTextColor(),
               fontFamily: "Roboto",
               fontWeight: FontWeight.normal,
               fontSize: 14,
@@ -195,14 +195,14 @@ class DayView extends StatelessWidget {
       Divider(
         height: 0,
         thickness: 1,
-        color: Theme.of(context).colorScheme.border,
+        color: ThemeManager.getInstance().getBorderColor(),
       ),
       Column(
         children: [
           Text(
             "Conférence",
             style: TextStyle(
-              color: conferenceColor,
+              color: ThemeManager.conferenceColor,
               fontFamily: "Roboto",
               fontWeight: FontWeight.w600,
               fontSize: 16,
@@ -211,7 +211,7 @@ class DayView extends StatelessWidget {
           Text(
             "12:00 - 13:00",
             style: TextStyle(
-              color: Theme.of(context).colorScheme.text,
+              color: ThemeManager.getInstance().getTextColor(),
               fontFamily: "Roboto",
               fontWeight: FontWeight.normal,
               fontSize: 14,

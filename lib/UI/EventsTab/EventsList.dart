@@ -8,9 +8,9 @@ class EventsList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.container,
+        color: ThemeManager.getInstance().getContainerColor(),
         border: Border.all(
-          color: Theme.of(context).colorScheme.border,
+          color: ThemeManager.getInstance().getBorderColor(),
           width: 1,
         ),
         borderRadius: BorderRadius.circular(4),
@@ -24,13 +24,13 @@ class EventsList extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: Text(
                 "Evénements à découvrir",
-                style: Theme.of(context).textTheme.headline2.copyWith(color: Theme.of(context).colorScheme.text),
+                style: Theme.of(context).textTheme.headline2.copyWith(color: ThemeManager.getInstance().getTextColor()),
               ),
             ),
             Divider(
               height: 0,
               thickness: 1,
-              color: Theme.of(context).colorScheme.border,
+              color: ThemeManager.getInstance().getBorderColor(),
             ),
             EventContainer(),
             EventContainer(),
@@ -78,7 +78,7 @@ class _EventContainerState extends State<EventContainer> {
                       "15",
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                        color: Theme.of(context).colorScheme.text,
+                        color: ThemeManager.getInstance().getTextColor(),
                         fontSize: 43,
                         height: 0.99,
                         fontFamily: "Roboto",
@@ -89,7 +89,7 @@ class _EventContainerState extends State<EventContainer> {
                       "SEPT",
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                        color: Theme.of(context).colorScheme.text,
+                        color: ThemeManager.getInstance().getTextColor(),
                         fontSize: 14,
                         height: 0.8,
                         fontFamily: "Roboto",
@@ -111,7 +111,7 @@ class _EventContainerState extends State<EventContainer> {
                         overflow: TextOverflow.ellipsis,
                         maxLines: 1,
                         style: TextStyle(
-                          color: soireeColor,
+                          color: ThemeManager.soireeColor,
                           fontSize: 16,
                           fontFamily: "Roboto",
                           fontWeight: FontWeight.w600,
@@ -123,7 +123,7 @@ class _EventContainerState extends State<EventContainer> {
                         overflow: TextOverflow.ellipsis,
                         maxLines: 1,
                         style: TextStyle(
-                          color: Theme.of(context).colorScheme.text,
+                          color: ThemeManager.getInstance().getTextColor(),
                           fontSize: 14,
                           fontFamily: "Roboto",
                           fontWeight: FontWeight.normal,
@@ -133,7 +133,7 @@ class _EventContainerState extends State<EventContainer> {
                         children: [
                           Icon(
                             Icons.location_on,
-                            color: Theme.of(context).colorScheme.text,
+                            color: ThemeManager.getInstance().getTextColor(),
                             size: 20,
                           ),
                           Text(
@@ -142,7 +142,7 @@ class _EventContainerState extends State<EventContainer> {
                             overflow: TextOverflow.ellipsis,
                             maxLines: 1,
                             style: TextStyle(
-                              color: Theme.of(context).colorScheme.text,
+                              color: ThemeManager.getInstance().getTextColor(),
                               fontSize: 14,
                               fontFamily: "Roboto",
                               fontWeight: FontWeight.normal,
@@ -162,6 +162,8 @@ class _EventContainerState extends State<EventContainer> {
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 4),
                 child: ChoiceChip(
+                  selectedColor: ThemeManager.getInstance().getChipColor(),
+                  labelStyle: TextStyle(color: ThemeManager.getInstance().getTextColor()),
                   label: Text('Je participe !'),
                   selected: _participates == true,
                   onSelected: (bool selected) {
@@ -188,7 +190,7 @@ class _EventContainerState extends State<EventContainer> {
           Divider(
             height: 0,
             thickness: 1,
-            color: Theme.of(context).colorScheme.border,
+            color: ThemeManager.getInstance().getBorderColor(),
           )
         ],
       ),

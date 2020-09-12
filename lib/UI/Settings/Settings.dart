@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ense3/models/global.dart';
+import 'package:theme_mode_handler/theme_mode_handler.dart';
 
 class Settings extends StatelessWidget {
   @override
@@ -10,70 +11,78 @@ class Settings extends StatelessWidget {
           "Paramètres",
         ),
       ),
-      body: ListView(children: <Widget>[
-        ListTile(
+      body: ListView(
+        children: <Widget>[
+          ListTile(
 //            padding: EdgeInsets.all(20),
-          title: Text(
-            "Thème",
-            style: Theme.of(context).textTheme.bodyText2.copyWith(color: Theme.of(context).colorScheme.text),
-          ),
-          subtitle: Text(
-            Theme.of(context).brightness == Brightness.light ? "Light Ense3" : "Dark UwU",
-            style: TextStyle(
-              fontFamily: "Roboto",
-              color: Color(0xff808080),
-              fontSize: 13,
+            title: Text(
+              "Thème",
+              style: Theme.of(context).textTheme.bodyText2.copyWith(color: ThemeManager.getInstance().getTextColor()),
             ),
-          ),
-          onTap: () {
-            showModalBottomSheet<void>(
-              context: context,
-              isScrollControlled: true,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.only(topLeft: Radius.circular(10), topRight: Radius.circular(10)),
+            subtitle: Text(
+              ThemeModeHandler.of(context).themeMode == ThemeMode.light ? "Light Ense3" : "Dark UwU",
+              style: TextStyle(
+                fontFamily: "Roboto",
+                color: Color(0xff808080),
+                fontSize: 13,
               ),
-              backgroundColor: Theme.of(context).colorScheme.backgroundColor,
-              builder: (BuildContext context) {
-                return Wrap(
-                  children: [
-                    Container(
-                      padding: EdgeInsets.all(10),
-                      child: Column(
-                        children: <Widget>[
-                          ListTile(
-                            title: Text(
-                              "Thème light Ense3",
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyText2
-                                  .copyWith(color: Theme.of(context).colorScheme.text),
+            ),
+            onTap: () {
+              showModalBottomSheet<void>(
+                context: context,
+                isScrollControlled: true,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.only(topLeft: Radius.circular(10), topRight: Radius.circular(10)),
+                ),
+                backgroundColor: ThemeManager.getInstance().getBackgroundColor(),
+                builder: (BuildContext context) {
+                  return Wrap(
+                    children: [
+                      Container(
+                        padding: EdgeInsets.all(10),
+                        child: Column(
+                          children: <Widget>[
+                            ListTile(
+                              title: Text(
+                                "Thème light Ense3",
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyText2
+                                    .copyWith(color: ThemeManager.getInstance().getTextColor()),
+                              ),
+                              onTap: () {
+                                ThemeManager.getInstance().theme = ThemeMode.light;
+                                ThemeModeHandler.of(context).saveThemeMode(ThemeMode.light);
+                                print("Switching to light theme");
+                                Navigator.pop(context);
+                              },
                             ),
-                            onTap: () {
-                              Navigator.pop(context);
-                            },
-                          ),
-                          ListTile(
-                            title: Text(
-                              "Thème dark UwU",
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyText2
-                                  .copyWith(color: Theme.of(context).colorScheme.text),
+                            ListTile(
+                              title: Text(
+                                "Thème dark UwU",
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyText2
+                                    .copyWith(color: ThemeManager.getInstance().getTextColor()),
+                              ),
+                              onTap: () {
+                                ThemeManager.getInstance().theme = ThemeMode.light;
+                                ThemeModeHandler.of(context).saveThemeMode(ThemeMode.dark);
+                                print("Switching to dark theme");
+                                Navigator.pop(context);
+                              },
                             ),
-                            onTap: () {
-                              Navigator.pop(context);
-                            },
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
-                );
-              },
-            );
-          },
-        ),
-      ]),
+                    ],
+                  );
+                },
+              );
+            },
+          ),
+        ],
+      ),
     );
   }
 }
