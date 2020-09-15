@@ -1,3 +1,4 @@
+import 'package:ense3/UI/EventsTab/SearchEvent.dart';
 import 'package:flutter/material.dart';
 import 'EventsList.dart';
 import 'package:ense3/models/global.dart';
@@ -18,23 +19,21 @@ class _AllEventsState extends State<AllEvents> {
         actions: [
           IconButton(
             icon: Icon(Icons.search),
-            onPressed: () {},
+            onPressed: () {
+              showSearch(context: context, delegate: SearchEvent());
+            },
           ),
         ],
       ),
       body: Container(
-        color: ThemeManager.getInstance().getContainerColor(),
+        color: ThemeManager.getInstance().getBackgroundColor(),
         padding: EdgeInsets.all(10),
-        child: Column(
-          children: [
-            Hero(
-              tag: "eventlist",
-              child: Material(
-                type: MaterialType.transparency,
-                child: EventsList(),
-              ),
-            ),
-          ],
+        child: Hero(
+          tag: "eventlist",
+          child: Material(
+            type: MaterialType.transparency,
+            child: EventsList(),
+          ),
         ),
       ),
     );
