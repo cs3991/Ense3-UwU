@@ -29,6 +29,7 @@ class ThemeManager {
   static const Color _darkText = Color(0xFFD1D1D1);
   static const Color _darkChip = Color(0xff2E6A2C);
 
+  static const Color _onPrimary = Colors.white;
   static const Color barColor = Color(0xFF7D498F);
   static const Color autresColor = Color(0xFF388738);
   static const Color repasColor = Color(0xFF3F6591);
@@ -129,5 +130,9 @@ class ThemeManager {
 
   Color getChipColor() {
     return theme == ThemeMode.light ? null : _darkChip;
+  }
+
+  Color getOnPrimaryColor() {
+    return theme == ThemeMode.light ? _onPrimary : _onPrimary;
   }
 }

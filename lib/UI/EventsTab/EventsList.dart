@@ -177,6 +177,7 @@ class _EventContainerState extends State<EventContainer> {
                 padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 4),
                 child: ChoiceChip(
                   label: Text('Je ne participe pas'),
+                  labelStyle: TextStyle(color: ThemeManager.getInstance().getTextColor()),
                   selected: _participates == false,
                   onSelected: (bool selected) {
                     setState(() {

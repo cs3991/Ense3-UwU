@@ -38,6 +38,8 @@ class EventsTab extends StatelessWidget {
             fit: FlexFit.loose,
             flex: 1,
             child: RaisedButton(
+              color: ThemeManager.getInstance().getPrimaryColor(),
+              textColor: ThemeManager.getInstance().getOnPrimaryColor(),
               child: Text(
                 "Tous les évenements",
                 style: TextStyle(fontFamily: 'Roboto'),
