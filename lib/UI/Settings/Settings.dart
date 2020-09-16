@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ense3/models/global.dart';
-import 'package:theme_mode_handler/theme_mode_handler.dart';
+import 'package:provider/provider.dart';
+// import 'package:theme_mode_handler/theme_mode_handler.dart';
 
 class Settings extends StatelessWidget {
   @override
@@ -20,7 +21,7 @@ class Settings extends StatelessWidget {
               style: Theme.of(context).textTheme.bodyText2.copyWith(color: ThemeManager.getInstance().getTextColor()),
             ),
             subtitle: Text(
-              ThemeModeHandler.of(context).themeMode == ThemeMode.light ? "Light Ense3" : "Dark UwU",
+              Provider.of<AppState>(context).isDarkModeOn ? "Dark UwU" : "Light Ense3",
               style: TextStyle(
                 fontFamily: "Roboto",
                 color: Color(0xff808080),
@@ -51,8 +52,8 @@ class Settings extends StatelessWidget {
                                     .copyWith(color: ThemeManager.getInstance().getTextColor()),
                               ),
                               onTap: () {
-                                ThemeManager.getInstance().theme = ThemeMode.light;
-                                ThemeModeHandler.of(context).saveThemeMode(ThemeMode.light);
+                                Provider.of<AppState>(context).updateTheme(false);
+                                // ThemeModeHandler.of(context).saveThemeMode(ThemeMode.light);
                                 print("Switching to light theme");
                                 Navigator.pop(context);
                               },
@@ -66,8 +67,8 @@ class Settings extends StatelessWidget {
                                     .copyWith(color: ThemeManager.getInstance().getTextColor()),
                               ),
                               onTap: () {
-                                ThemeManager.getInstance().theme = ThemeMode.light;
-                                ThemeModeHandler.of(context).saveThemeMode(ThemeMode.dark);
+                                Provider.of<AppState>(context).updateTheme(true);
+                                // ThemeModeHandler.of(context).saveThemeMode(ThemeMode.dark);
                                 print("Switching to dark theme");
                                 Navigator.pop(context);
                               },

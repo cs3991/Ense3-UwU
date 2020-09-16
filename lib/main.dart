@@ -1,28 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'UI/EventsTab/EventsTab.dart';
 import 'UI/Settings/Settings.dart';
 import 'models/global.dart';
 import 'package:ense3/models/ThemeManager.dart';
-import 'package:theme_mode_handler/theme_mode_handler.dart';
+// import 'package:theme_mode_handler/theme_mode_handler.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(ChangeNotifierProvider<AppState>(
+      builder: (context) => AppState(),
+      child: MyApp(),
+    ));
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ThemeModeHandler(
-        manager: MyManager(),
-        defaultTheme: ThemeMode.light,
-        builder: (ThemeMode themeMode) {
-          return MaterialApp(
-            title: 'Ense3',
-            themeMode: themeMode,
-            darkTheme: ThemeManager.darkTheme,
-            theme: ThemeManager.lightTheme,
-            home: Home(),
-            debugShowCheckedModeBanner: false,
-          );
-        });
+    return Consumer<AppState>(builder: (context, appState, _) {
+      return MaterialApp(
+        title: 'Ense3',
+        themeMode: appState.isDarkModeOn ? ThemeMode.dark : ThemeMode.light,
+        darkTheme: ThemeManager.darkTheme,
+        theme: ThemeManager.lightTheme,
+        home: Home(),
+        debugShowCheckedModeBanner: false,
+      );
+    });
   }
 }
 

@@ -1,11 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:ense3/models/palette.dart';
-import 'package:theme_mode_handler/theme_mode_handler.dart';
+import 'package:provider/provider.dart';
+// import 'package:theme_mode_handler/theme_mode_handler.dart';
 
 class BoxScrollBehavior extends ScrollBehavior {
   @override
   Widget buildViewportChrome(BuildContext context, Widget child, AxisDirection axisDirection) {
     return child;
+  }
+}
+
+class AppState extends ChangeNotifier {
+  bool isDarkModeOn = false;
+
+  void updateTheme(bool isDarkModeOn) {
+    this.isDarkModeOn = isDarkModeOn;
+    notifyListeners();
   }
 }
 
@@ -94,7 +104,7 @@ class ThemeManager {
 
   // ignore: non_constant_identifier_names
   ThemeManager._ThemeManager(BuildContext context) {
-    this.theme = ThemeModeHandler.of(context).themeMode;
+    this.theme = Provider.of<AppState>(context).isDarkModeOn ? ThemeMode.dark : ThemeMode.light;
   }
 
   static createInstance(BuildContext context) {
